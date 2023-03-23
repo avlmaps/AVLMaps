@@ -9,11 +9,11 @@ import open3d as o3d
 
 from matplotlib import pyplot as plt
 
-from utils.clip_mapping_utils import *
-from utils.clip_utils import get_text_feats
+from avlmaps_utils.clip_mapping_utils import *
+from avlmaps_utils.clip_utils import get_text_feats
 # from utils.planning_utils import mp3dcat
-from utils.time_utils import Tic
-from utils.concept_fusion_utils import generate_fused_features, load_concept_fusion_map
+from avlmaps_utils.time_utils import Tic
+from avlmaps_utils.concept_fusion_utils import generate_fused_features, load_concept_fusion_map
 
 def visualize_vlmaps_3d(data_dir: str, camera_height: float, cs: float, gs: int):
     # loading models

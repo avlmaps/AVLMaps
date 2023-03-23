@@ -12,14 +12,14 @@ import clip
 
 from matplotlib import pyplot as plt
 
-from utils.clip_mapping_utils import *
-from utils.time_utils import Tic
-from utils.concept_fusion_utils import (
+from avlmaps_utils.clip_mapping_utils import *
+from avlmaps_utils.time_utils import Tic
+from avlmaps_utils.concept_fusion_utils import (
     generate_fused_features,
     save_concept_fusion_map,
     load_concept_fusion_map,
 )
-from utils.lseg_utils import get_lseg_feat
+from avlmaps_utils.lseg_utils import get_lseg_feat
 
 from lseg.modules.models.lseg_net import LSegEncNet
 from lseg.additional_utils.models import resize_image, pad_image, crop_image

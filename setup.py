@@ -11,9 +11,9 @@ version = "0.0"
 #     dependencies = f.read().split('\n')
 
 setup(
-    name='vlmaps',
+    name='avlmaps',
     version=version,
-    packages=['lseg', 'audioclip', 'utils', 'vlmaps'],
+    packages=['lseg', 'audioclip', 'avlmaps_utils', 'vlmaps'],
     python_requires='>=3.8',
     # install_requires=dependencies,
     author='Chenguang Huang',
