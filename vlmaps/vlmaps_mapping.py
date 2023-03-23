@@ -1,5 +1,6 @@
 import time
 import os
+import tqdm
 
 import hydra
 from omegaconf import DictConfig
@@ -153,10 +154,10 @@ def create_vlmaps_3d_batch(
 
     tf_list = []
     # load all images and depths and poses
-    for iter_i, (rgb_path, depth_path, pose_path) in enumerate(
-        zip(rgb_list, depth_list, pose_list)
-    ):
-        print(f"Running iteration {iter_i+1}/{len(rgb_list)}")
+    data_iter = zip(rgb_list, depth_list, pose_list)
+    pbar = tqdm(total=len(rgb_list))
+    for iter_i, data_sample in enumerate(data_iter):
+        rgb_path, depth_path, pose_path = data_sample
         if iter_i in mapped_iter_set:
             continue
         st = time.time()
@@ -185,7 +186,6 @@ def create_vlmaps_3d_batch(
         # read depth
         depth = load_depth(depth_path)
         depth = depth / 10.0
-        vis_depth = depth[:, :, None]
         depth = depth * 10.0
 
         # pix_feats = generate_fused_features(rgb_path, bboxes_path, mask_path, clip_model, preprocess) # (H, W, 512)
@@ -200,7 +200,6 @@ def create_vlmaps_3d_batch(
             norm_std,
             vis,
         )
-        tic.print_time("generating clip features")
 
         # project all point cloud onto the ground, once there are points in a cell,
         pc, mask = depth2pc(depth)
@@ -232,7 +231,6 @@ def create_vlmaps_3d_batch(
             rgb_v = rgb[rgb_py, rgb_px, :]
 
             if max_id >= grid_feat.shape[0]:
-                print("extending grid_feat size")
                 grid_feat = np.concatenate(
                     [
                         grid_feat,
@@ -308,7 +306,8 @@ def create_vlmaps_3d_batch(
             )
 
         et = time.time()
-        print(f"Iteration time: {et-st}")
+        pbar.set_description(f"Iteration time: {et-st}")
+        pbar.update(1)
 
     print(f"Saving {max_id} features...")
     grid_feat = grid_feat[:max_id]
