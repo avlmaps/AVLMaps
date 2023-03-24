@@ -1,6 +1,6 @@
 import time
 import os
-import tqdm
+from tqdm import tqdm
 
 import hydra
 from omegaconf import DictConfig
@@ -303,6 +303,7 @@ def create_vlmaps_3d_batch(
                 weight,
                 occupied_ids,
                 list(mapped_iter_set),
+                grid_rgb,
             )
 
         et = time.time()
