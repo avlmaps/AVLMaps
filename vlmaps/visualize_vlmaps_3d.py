@@ -13,7 +13,7 @@ from avlmaps_utils.clip_mapping_utils import *
 from avlmaps_utils.clip_utils import get_text_feats
 # from utils.planning_utils import mp3dcat
 from avlmaps_utils.time_utils import Tic
-from avlmaps_utils.concept_fusion_utils import generate_fused_features, load_concept_fusion_map
+from avlmaps_utils.mapping_3d_utils import generate_fused_features, load_3d_map
 
 def visualize_vlmaps_3d(data_dir: str, camera_height: float, cs: float, gs: int):
     # loading models
@@ -40,7 +40,7 @@ def visualize_vlmaps_3d(data_dir: str, camera_height: float, cs: float, gs: int)
     tic.tic()
     map_save_dir = os.path.join(data_dir, "vlmaps_lseg_3d")
     concept_fusion_map_save_path = os.path.join(map_save_dir, f"vlmaps_lseg_3d.h5df")
-    mapped_iter_list, grid_feat, grid_pos, weight, occupied_ids, _ = load_concept_fusion_map(concept_fusion_map_save_path)
+    mapped_iter_list, grid_feat, grid_pos, weight, occupied_ids, _ = load_3d_map(concept_fusion_map_save_path)
     tic.print_time("load concept fusion map")
     pc_global = grid_id2pos_3d_batch(grid_pos, camera_height, cs, gs) # (N, 3)
 

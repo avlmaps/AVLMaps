@@ -182,7 +182,7 @@ def load_efficient_map(map_path: str):
         return map
 
 
-def save_concept_fusion_map(
+def save_3d_map(
     save_path: str,
     grid_feat: np.ndarray,
     grid_pos: np.ndarray,
@@ -203,7 +203,7 @@ def save_concept_fusion_map(
             f.create_dataset("grid_rgb", data=grid_rgb)
 
 
-def load_concept_fusion_map(map_path: str):
+def load_3d_map(map_path: str):
     with h5py.File(map_path, "r") as f:
         mapped_iter_list = f["mapped_iter_list"][:].tolist()
         grid_feat = f["grid_feat"][:]

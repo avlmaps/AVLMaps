@@ -14,10 +14,10 @@ from matplotlib import pyplot as plt
 
 from avlmaps_utils.clip_mapping_utils import *
 from avlmaps_utils.time_utils import Tic
-from avlmaps_utils.concept_fusion_utils import (
+from avlmaps_utils.mapping_3d_utils import (
     generate_fused_features,
-    save_concept_fusion_map,
-    load_concept_fusion_map,
+    save_3d_map,
+    load_3d_map,
 )
 from avlmaps_utils.lseg_utils import get_lseg_feat
 
@@ -135,7 +135,7 @@ def create_vlmaps_3d_batch(
             weight,
             occupied_ids,
             grid_rgb,
-        ) = load_concept_fusion_map(concept_fusion_map_save_path)
+        ) = load_3d_map(concept_fusion_map_save_path)
         mapped_iter_set = set(mapped_iter_list)
         print(grid_feat.shape)
         print(np.max(occupied_ids))
@@ -296,7 +296,7 @@ def create_vlmaps_3d_batch(
             grid_feat = grid_feat[:max_id]
             grid_pos = grid_pos[:max_id]
             weight = weight[:max_id]
-            save_concept_fusion_map(
+            save_3d_map(
                 concept_fusion_map_save_path,
                 grid_feat,
                 grid_pos,
@@ -315,7 +315,7 @@ def create_vlmaps_3d_batch(
     grid_pos = grid_pos[:max_id]
     weight = weight[:max_id]
     grid_rgb = grid_rgb[:max_id]
-    save_concept_fusion_map(
+    save_3d_map(
         concept_fusion_map_save_path,
         grid_feat,
         grid_pos,
