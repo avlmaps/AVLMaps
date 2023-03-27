@@ -70,6 +70,12 @@ class VLMapsDataloaderHabitat:
     def get_obstacles_cropped(self) -> np.array:
         return self.obstacles_cropped
 
+    def get_obstacles_cropped_no_floor(self) -> np.array:
+        floor_mask = self.gt_cropped == 2
+        obstacles_cropped_no_floor = self.obstacles_cropped.copy()
+        obstacles_cropped_no_floor[floor_mask] = 1
+        return obstacles_cropped_no_floor
+
     def convert_cropped_map_point_to_camera_position(
         self, col: int, row: int
     ) -> Tuple[float, float]:
