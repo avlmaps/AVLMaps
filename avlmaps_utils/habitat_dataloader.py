@@ -35,6 +35,16 @@ class VLMapsDataloaderHabitat:
         x_indices, y_indices = np.where(self.obstacles == 0)
         tic.print_time("loading obstacles map")
 
+
+        self.gt_semantic_map_save_path = os.path.join(
+            map_save_dir, f"grid_gt_1.npy"
+        )
+        tic.tic()
+        self.gt = load_map(self.gt_semantic_map_save_path)
+        self.gt_cropped = self.gt[self.xmin : self.xmax + 1, self.ymin : self.ymax + 1]
+        tic.print_time("loading gt")
+
+
         self.xmin = np.min(x_indices)
         self.xmax = np.max(x_indices)
         self.ymin = np.min(y_indices)
