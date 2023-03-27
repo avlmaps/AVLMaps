@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 
 from avlmaps_utils.clip_mapping_utils import *
 from avlmaps_utils.clip_utils import *
@@ -18,7 +19,6 @@ class VLMapsDataloaderHabitat:
         tf_ro_cam: Optional[np.ndarray] = None
     ):
         self.data_dir = data_dir
-        is_lanseg = True
 
         map_save_dir = os.path.join(data_dir, "map")
 
@@ -34,9 +34,6 @@ class VLMapsDataloaderHabitat:
         self.obstacles = load_map(self.obstacles_save_path)
         x_indices, y_indices = np.where(self.obstacles == 0)
         tic.print_time("loading obstacles map")
-
-
-
 
         self.xmin = np.min(x_indices)
         self.xmax = np.max(x_indices)
@@ -54,6 +51,17 @@ class VLMapsDataloaderHabitat:
         self.gt = load_map(self.gt_semantic_map_save_path)
         self.gt_cropped = self.gt[self.xmin : self.xmax + 1, self.ymin : self.ymax + 1]
         tic.print_time("loading gt")
+
+        self.obj2cls_path = os.path.join(data_dir, "obj2cls_dict.txt")
+        self.obj2cls = load_obj2cls_dict(self.obj2cls_path)
+        self.id2cls = get_id2cls(self.obj2cls)  # map from cls id to cls name
+        self.lang = ["none"] * 40
+
+        for id, name in self.id2cls.items():
+            # print(id, name)
+            if id < 0 or id == 40:
+                continue
+            self.lang[id] = name
 
         self.no_map_mask = self.obstacles_cropped > 0
 
@@ -86,6 +94,30 @@ class VLMapsDataloaderHabitat:
         obstacles_cropped_no_floor = self.obstacles_cropped.copy()
         obstacles_cropped_no_floor[floor_mask] = 1
         return obstacles_cropped_no_floor
+
+    def get_gt_semantic_cropped(self) -> np.array:
+        return self.gt_cropped
+    
+    def visualize_gt(self):
+        new_pallete = get_new_pallete(len(self.lang))
+        mask, patches = get_new_mask_pallete(
+            self.gt_cropped, new_pallete, out_label_flag=True, labels=self.lang
+        )
+        seg = mask.convert("RGBA")
+        seg = np.array(seg)
+        no_map_mask = self.obstacles_cropped > 0
+        floor_mask = self.gt_cropped == 2
+        seg[no_map_mask] = [225, 225, 225, 255]
+        seg[floor_mask] = [225, 225, 225, 255]
+
+        fig, ax = plt.subplots()
+        fig.set_size_inches(10,10)
+        plt.legend(
+            handles=patches, loc="upper left", bbox_to_anchor=(1.0, 1), prop={"size": 10}
+        )
+
+        plt.axis("off")
+        plt.imshow(seg)
 
     def convert_cropped_map_point_to_camera_position(
         self, col: int, row: int
