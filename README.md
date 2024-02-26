@@ -2,7 +2,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1gdtLvg_Fbl16N3ITp5FsU9ZAG6HmspVb?usp=sharing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+[![Static Badge](https://img.shields.io/badge/Project-Page-a)](https://avlmaps.github.io/)
 
 [<b>Audio Visual Language Maps for Robot Navigation</b>](https://arxiv.org/pdf/2303.07522.pdf)
 
