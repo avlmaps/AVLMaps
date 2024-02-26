@@ -1,0 +1,84 @@
+difficulty:
+  level_1:
+    - Interior/domestic sounds
+    # - Human, non-speech sounds
+    # - Animals
+  level_2:
+    - Interior/domestic sounds
+    - Human, non-speech sounds
+  level_3:
+    - Interior/domestic sounds
+    - Human, non-speech sounds
+    - Animals
+  level_4:
+    - Interior/domestic sounds
+    - Human, non-speech sounds
+    - Animals
+    - Natural soundscapes
+  level_5:
+    - Interior/domestic sounds
+    - Human, non-speech sounds
+    - Animals
+    - Natural soundscapes
+    - Exterior/urban noises
+
+major_categories:
+  Animals:
+    - dog
+    - rooster
+    - pig
+    - cow
+    - frog
+    - cat
+    - hen
+    - insects
+    - sheep
+    - crow
+
+  Natural soundscapes:
+    - rain
+    - sea_waves
+    - crackling_fire
+    - crickets
+    - chirping_birds
+    - water_drops
+    - wind
+    - pouring_water
+    - toilet_flush
+    - thunderstorm
+
+  Human, non-speech sounds:
+    - crying_baby
+    - sneezing
+    - clapping
+    - breathing
+    - coughing
+    - footsteps
+    - laughing
+    - brushing_teeth
+    - snoring
+    - drinking_sipping
+
+  Interior/domestic sounds:
+    - door_wood_knock
+    - mouse_click
+    - keyboard_typing
+    - door_wood_creaks
+    - can_opening
+    - washing_machine
+    - vacuum_cleaner
+    - clock_alarm
+    - clock_tick
+    - glass_breaking
+
+  Exterior/urban noises:
+    - helicopter
+    - chainsaw
+    - siren
+    - car_horn
+    - engine
+    - train
+    - church_bells
+    - airplane
+    - fireworks
+    - hand_saw

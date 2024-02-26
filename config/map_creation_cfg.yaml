@@ -1,0 +1,12 @@
+defaults:
+  - data_paths: lab_new
+  - map_config: vlmaps
+  - params: default
+  - sound_data_collect_params: sound_collect_default
+  - sound_config: sound_config
+  - _self_
+nav:
+  valid_range: 1
+  vis: False
+  tasks_per_scene: 20
+scene_id: 0
