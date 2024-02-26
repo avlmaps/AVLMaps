@@ -8,11 +8,14 @@
 
 [Chenguang Huang](http://www2.informatik.uni-freiburg.de/~huang/), [Oier Mees](https://www.oiermees.com/), [Andy Zeng](https://andyzeng.github.io/), [Wolfram Burgard](http://www2.informatik.uni-freiburg.de/~burgard)
 
-We present **AVLMAPs** (**A**udio **V**isual **L**anguage **Maps**),  a spatial map representation in which pretrained visuallanguage model features are fused into a 3D reconstruction of the physical world. Spatially anchoring visual language features enables *natural language indexing in the map*, which can be used to, e.g., localize landmarks
-or spatial references with respect to landmarks – enabling zero-shot spatial
-goal navigation without additional data collection or model finetuning.
+We present **AVLMAPs** (**A**udio **V**isual **L**anguage **Maps**), an open-vocabulary 3D map representation
+for storing cross-modal information from audio, visual, and language
+cues. When combined with large language models, AVLMaps consumes
+multimodal prompts from audio, vision and language to solve zero-shot
+spatial goal navigation by effectively leveraging complementary
+information sources to disambiguate goals.
 
-![](media/cover_lady.png)
+![cover_lady](media/cover_lady_cropped.png)
 
 # Quick Start
 Try AVLMaps creation and landmark indexing in [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1gdtLvg_Fbl16N3ITp5FsU9ZAG6HmspVb?usp=sharing).
