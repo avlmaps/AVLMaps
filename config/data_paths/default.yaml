@@ -1,0 +1,5 @@
+habitat_scene_dir: "/home/huang/hcg/projects/vln/data/data/scene_datasets/mp3d/v1/tasks/mp3d_habitat/mp3d/"
+avlmaps_data_dir: "/home/huang/hcg/projects/avlmaps/data/vln_data/"
+agent_mesh_dir: "/home/huang/hcg/projects/vln/data/habitat_objects/objects/locobot_merged"
+esc50_meta_path: "/home/huang/hcg/projects/vln/data/ESC-50-master/meta/esc50.csv"
+esc50_audio_dir: "/home/huang/hcg/projects/vln/data/ESC-50-master/audio"

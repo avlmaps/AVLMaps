@@ -1,0 +1,18 @@
+difficulty: level_3
+is_ambiguous_data: True
+num_audio_video_per_scene: 20
+num_tasks_per_scene: 100
+num_cross_modal_tasks_per_scene: 5
+fps: 25
+sample_rate: 44100
+sound_interval: 1
+min_dist_between_sound: 1
+considered_seq_num_per_scene: 20
+overwrite_audio_frame_ranges: False
+overwrite_task: True
+silence_duration_s: 1
+silence_threshold: 0
+seed: 1
+ignore_scene:
+  - gxdoqLR6rwA_1
+  # - YmJkqBEsHnH_1
