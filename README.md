@@ -215,45 +215,6 @@ The details of the structure of data are explained in the dataset [README](./dat
     * set the image resolution with `resolution.w` and `resolution.h`
     * set `save_query_image` to True to save the selected query image in the interactive top-down map.
 
-## Test Navigation
-
-### Setup OpenAI
-In order to test object goal navigation and spatial goal navigation tasks with our method, you need to setup an OpenAI API account with the following steps:
-1. [Sign up an OpenAI account](https://openai.com/blog/openai-api), login your account, and bind your account with at least one payment method.
-2. [Get you OpenAI API keys](https://platform.openai.com/account/api-keys), copy it.
-3. Open your `~/.bashrc` file, paste a new line `export OPENAI_KEY=<your copied key>`, and save the file.
-
-
-### Run Object Goal Navigation
-
-1. Run object goal navigation. The code will load tasks specified in `<scene_folder>/object_navigation_tasks.json`. The results will be saved in `<scene_folder>/vlmap_obj_nav_results/`. 
-    ```bash
-    cd application/evaluation
-    python evaluate_object_goal_navigation.py
-    ```
-2. To compute the final metrics, run the following:
-    ```bash
-    cd application/evaluation
-    python compute_object_goal_navigation_metrics.py
-    ```
-3. Config `config/object_goal_navigation_cfg.json`.
-    1. Modify `nav/vis` to `true` to visualize navigation results (POV, topdown trajectory, predicted goal etc.).
-    2. Modify `scene_id` to either a number (0~9) or a list `[0,1,3]` to specify which scene to evaluate.
-
-### Run Spatial Goal Navigation
-1. Run spatial goal navigation. The code will load tasks specified in `<scene_folder>/spatial_goal_navigation_tasks.json`. The results will be saved in `<scene_folder>/vlmap_spatial_nav_results/`. Modify `nav/vis` to `true` in `config/spatial_goal_navigation_cfg.json` to visualize navigation results (POV, topdown trajectory, predicted goal etc.)
-    ```bash
-    cd application/evaluation
-    python evaluate_spatial_goal_navigation.py
-    ```
-2. To compute the final metrics, run the following:
-    ```bash
-    cd application/evaluation
-    python compute_spatial_goal_navigation_metrics.py
-    ```
-3. Config `config/spatial_goal_navigation_cfg.json`.
-    1. Modify `nav/vis` to `true` to visualize navigation results (POV, topdown trajectory, predicted goal etc.).
-    2. Modify `scene_id` to either a number (0~9) or a list `[0,1,3]` to specify which scene to evaluate.
 
 
 ## Citation
