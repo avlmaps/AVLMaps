@@ -179,7 +179,7 @@ The details of the structure of data are explained in the dataset [README](./dat
   * `cam_calib_mat` is the flattened camera intrinsics matrix
   * `depth_sample_rate`: we only back project randomly sampled `h * w / depth_sample_rate` pixels at each frame
 
-## Index a VLMap
+## Index an AVLMap
 * Change the value for `defaults/data_paths` in `config/map_indexing_cfg.yaml` to `default`.
 * Change the `habitat_scene_dir` and `avlmaps_data_dir` in `config/data_paths/default.yaml` according to the steps in the **Generate Dataset** section above.
 * Run the following command to index a VLMap you built
