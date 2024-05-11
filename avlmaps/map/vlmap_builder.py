@@ -149,7 +149,7 @@ class VLMapBuilder:
                 # when the max_id exceeds the reserved size,
                 # double the grid_feat, grid_pos, weight, grid_rgb lengths
                 if max_id >= grid_feat.shape[0]:
-                    self._reserve_map_space(grid_feat, grid_pos, weight, grid_rgb)
+                    grid_feat, grid_pos, weight, grid_rgb = self._reserve_map_space(grid_feat, grid_pos, weight, grid_rgb)
 
                 # apply the distance weighting according to
                 # ConceptFusion https://arxiv.org/pdf/2302.07241.pdf Sec. 4.1, Feature fusion
